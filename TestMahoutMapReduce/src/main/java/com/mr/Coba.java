@@ -44,7 +44,7 @@ public class Coba {
 		          List<RecommendedItem> itemRecommendations = genericRecommender.recommend(userId, 5);
 		 
 		          
-		          /*
+		          
 		          System.out.format("User Id: %d%n", userId);
 		 
 		          if (itemRecommendations.isEmpty())
@@ -59,7 +59,7 @@ public class Coba {
 		                  System.out.format("Recommened Item Id %d. Strength of the preference: %f%n", recommendedItem.getItemID(), recommendedItem.getValue());
 		              }
 		          }
-		          */
+		          
 		    }
 		} catch (IOException e) {
 			System.out.println("file not found");
