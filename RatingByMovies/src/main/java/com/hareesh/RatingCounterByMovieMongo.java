@@ -36,40 +36,12 @@ public class RatingCounterByMovieMongo extends Configured implements Tool{
 		
 		job.setReducerClass(MovieReducer.class);
 		
-		/*job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Text.class);
-		
-		Path p3=new Path("output");
-		
-		FileSystem fs = FileSystem.get(conf);
-		
-		if(fs.exists(p3)){
-			fs.delete(p3, true);
-		}*/
-		
 		job.setOutputFormatClass(com.mongodb.hadoop.MongoOutputFormat.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
-        
-		/*
-		
-		FileOutputFormat.setOutputPath(job, p3);
-		
-		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Text.class);
 
-		
-		
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
-*/
-		boolean success = job.waitForCompletion(true);
-        	
-		if(success)
-			System.out.println("test");
-		else
-			System.out.println("failed");
-		
+        boolean success = job.waitForCompletion(true);
+        			
 		return success?0:1;
 		
 		
@@ -86,44 +58,3 @@ public class RatingCounterByMovieMongo extends Configured implements Tool{
 	}
 }
 
-/*
-public class RatingCounterByMovieMongo extends Configured implements Tool{
-
-	public static void main(String[] args) throws Exception
-	{
-		if (args.length != 3 ){
-			System.err.println ("Usage :<inputlocation1> <inputlocation2> <outputlocation> >");
-			System.exit(0);
-		}
-		int res = ToolRunner.run(new Configuration(), new RatingCounterByMovieMongo(), args);
-		System.exit(res);
-
-	}
-	
-	public int run(String[] args) throws Exception {
-		Configuration c=new Configuration();
-		String[] files=new GenericOptionsParser(c,args).getRemainingArgs();
-		
-		Path p1=new Path(files[0]);
-		Path p2=new Path(files[1]);
-		Path p3=new Path(files[2]);
-		
-		FileSystem fs = FileSystem.get(c);
-		
-		if(fs.exists(p3)){
-			fs.delete(p3, true);
-		}
-		
-		Job job = new Job(c,"Multiple Job");
-		job.setJarByClass(RatingCounterByMovieMongo.class);
-		MultipleInputs.addInputPath(job, p1, TextInputFormat.class, RatingMapper.class);
-		MultipleInputs.addInputPath(job, p2, TextInputFormat.class, MovieMapper.class);
-		job.setReducerClass(MovieReducer.class);
-		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Text.class);
-		
-		FileOutputFormat.setOutputPath(job, p3);
-		boolean success = job.waitForCompletion(true);
-		return success?0:1;
-	}
-}*/
