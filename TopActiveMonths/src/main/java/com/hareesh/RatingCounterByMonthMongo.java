@@ -61,11 +61,15 @@ public class RatingCounterByMonthMongo  extends Configured implements Tool{
         job.setJarByClass(RatingCounterByMonthMongo.class);
 
         job.setInputFormat(org.apache.hadoop.mapred.TextInputFormat.class);
+        
         job.setMapperClass(MonthMapper.class);
+        
         job.setReducerClass(MonthReducer.class);
+        
         job.setOutputFormat(MongoOutputFormat.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(BSONWritable.class);
+        
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
 
