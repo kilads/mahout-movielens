@@ -1,0 +1,3 @@
+to run this map reduce program after genereate its fat jar file (exectutables and all its dependencies)
+
+$ hadoop jar TopActiveMonths-0.0.1-SNAPSHOT.jar path/to/ratings.dat mongodb://[username:password@]host:port/database
