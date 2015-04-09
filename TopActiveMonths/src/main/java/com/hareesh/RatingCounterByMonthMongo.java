@@ -22,31 +22,8 @@ public class RatingCounterByMonthMongo  extends Configured implements Tool{
         if (args.length != 2) {
             System.out.println("usage: [input] [mongo-uri]");
             System.exit(-1);
-        }
+        }        
         
-       /* RatingCounterByMonthMongo rm = new RatingCounterByMonthMongo();
-        
-        final Configuration conf = rm.getConf();
-        conf.set("mongo.output.uri", args[1]);
-        
-        Job job = Job.getInstance(conf);
-        job.setMapperClass(MonthMapper.class);
-        job.setReducerClass(MonthReducer.class);
-
-        job.setInputFormatClass(TextInputFormat.class);
-        job.setOutputFormatClass(MongoOutputFormat.class);
-
-        FileInputFormat.setInputPaths(job, new Path(args[0]));
-
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(BSONWritable.class);
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
-        job.setJarByClass(RatingCounterByMonth.class);
-
-        
-        System.exit(job.waitForCompletion(true) ? 0 : 1);
-*/        
         int res = ToolRunner.run(new RatingCounterByMonthMongo(), args);
         System.exit(res);
     }
