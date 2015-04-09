@@ -39,7 +39,7 @@ public class MovieToMongo  extends Configured implements Tool{
 
         job.setInputFormat(org.apache.hadoop.mapred.TextInputFormat.class);
         
-        job.setMapperClass(MonthMapper.class);
+        job.setMapperClass(MovieMapper.class);
                 
         job.setOutputFormat(MongoOutputFormat.class);
         job.setOutputKeyClass(Text.class);

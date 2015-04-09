@@ -12,7 +12,7 @@ import org.apache.hadoop.mapred.Reporter;
 
 import com.sun.tools.corba.se.idl.constExpr.Xor;
 
-public class MonthMapper implements org.apache.hadoop.mapred.Mapper<Object, Text, Text, Text> {
+public class MovieMapper implements org.apache.hadoop.mapred.Mapper<Object, Text, Text, Text> {
 
 
     private String SEPARATOR = "::";
